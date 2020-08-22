@@ -27,16 +27,37 @@ public class ProductController {
 	/*
 	 * This methods is used to insert Product data in database . It takes the data only in json Format 
 	 */
-	@PostMapping(value="/product",consumes="application/json")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(value="/addproduct",consumes="application/json")
 	public String addProduct(@RequestBody Product product) throws ProductException
 	{   productService.addProduct(product);
 		return "Product Added Successfully";
 	}
 	
+	/*
+	 * This methods is used to edit a Product data in database . It takes the data only in json Format 
+	 */
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(value="/editproduct",consumes="application/json")
+	public String editProduct(@RequestBody Product product) throws ProductException
+	{   productService.editProduct(product);
+		return "Product Edited Successfully";
+	}
+	
+	/*
+	 * This methods is used to delete a Product data in database . It takes the data only in json Format 
+	 */
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(value="/deleteproduct",consumes="application/json")
+	public String deleteProduct(@RequestBody Product product) throws ProductException
+	{   productService.deleteProduct(product);
+		return "Product deleted Successfully";
+	}
 	
 	/*
 	 * This method will return the List of all the products available in database
      */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(value="/product")
 	public List displayAllProducts() throws ProductException
 	{  
